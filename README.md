@@ -1,15 +1,19 @@
 # minifuzzy.vim :mag_right:
-- Simple Vim9 fuzzy finder wrapper
+## A Cross-Platform Vim9 Fuzzy Finder
+
+FdMinifuzzy is an oxidized fork of the original Minifuzzy, a Vim9Script fuzzy finder. FdMinifuzzy leverages the power of the *fd* command, written in Rust, to ensure seamless compatibility across various platforms.
+FdMinifuzzy honors the rules specified in your project’s .gitignore file, ensuring that excluded files and directories are respected during fuzzy searches.
 
 ![Using minifuzzy.vim to search files in the current directory](images/minifuzzy.gif)
 
 ## :hammer: Installation
 :warning: Only supported for vim >= 8.2, not nvim
 
-Install using vim's builtin plugin manager:
+[Required *fd* binary in the PATH](https://github.com/sharkdp/fd/releases/tag/v9.0.0)
+
+Install using vim's plugin manager:
 ```sh
-mkdir -p ~/.vim/pack/bundle/start
-git clone https://github.com/hahdookin/minifuzzy.vim ~/.vim/pack/bundle/start/minifuzzy.vim
+Plug 'sevehub/fdminifuzzy'
 ```
 
 ## :alembic: Usage

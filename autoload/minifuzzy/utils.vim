@@ -23,11 +23,9 @@ enddef
 
 export def BuildFindCommand(root: string): string
     const ignores = &wildignore->split(",")
-    final ignore_dirs = ignores->copy()->filter((_, val) => stridx(val, '/') != -1)
-    final ignore_files = ignores->copy()->filter((_, val) => stridx(val, '/') == -1)
-    ignore_dirs->map((_, val) => $"-path '{val}'")
-    ignore_files->map((_, val) => $"-not -name '{val}'")
-    const dirs = ignore_dirs->join(" -o ")
-    const files = ignore_files->join()
-    return $'find {root} -type f -not \( {dirs} \) {files} -print'
+    final ignore_dirsfiles = ignores->copy()
+    ignore_dirsfiles->map((_, val) => $'-E {val}')
+    const dirsfiles = ignore_dirsfiles->join()
+    # echom dirsfiles
+    return $'fd -d 4 {dirsfiles} {root}'
 enddef
