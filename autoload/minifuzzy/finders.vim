@@ -11,21 +11,30 @@ export def GitFiles()
 enddef
 
 export def MRU()
-    InitFuzzyFind(utils.GetMRU(10), { title: 'MRU' })
+    InitFuzzyFind(utils.GetMRU(20), { title: 'MRU' })
 enddef
 
 # Command functions
 export def Find(directory: string)
     const root = directory == '' ? '.' : directory
     const ffiles = systemlist(utils.BuildFindCommand(root))
-    # echom ffiles
+
     if ffiles->len() != 0 
-        InitFuzzyFind(ffiles, { title: $'{utils.GetCurrentDirectory()}/' })
+       InitFuzzyFind(ffiles, { title: $'{utils.GetCurrentDirectory()}/' })
     endif
 enddef
 
+export def DirectoryHistory()
+     if exists("g:directory_history") && len(g:directory_history) > 0
+         InitFuzzyFind(g:directory_history, { title: 'Recent Folders' })
+     endif
+
+enddef
+
+
 export def Buffers()
-    const buffers = getcompletion('', 'buffer')->filter((_, val) => bufnr(val) != bufnr())
+    const buffers = getcompletion('', 'buffer')
+        ## ->filter((_, val) => bufnr(val) != bufnr())
     InitFuzzyFind(buffers, {
         exec_cb: (s) => execute($"buffer {s}"),
         ctrl_x_cb: (s) => execute($"sp | buffer {s}"),

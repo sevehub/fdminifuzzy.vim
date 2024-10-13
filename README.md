@@ -22,5 +22,7 @@ The following mappings can be used to fuzzy find:
 - `<leader>fb` -- Buffers
 - `<leader>fm` -- Most recently used files
 - `<leader>fl` -- Lines in the current buffer
+- `<leader>fd` -- Recent folders and Netrw bookmarks
+
 
 ---

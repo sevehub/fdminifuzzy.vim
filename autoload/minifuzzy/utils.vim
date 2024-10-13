@@ -1,5 +1,12 @@
 vim9script
 
+#Global user's defined
+var fd_exe = "fd"
+if exists('g:fd_exe')
+    fd_exe = g:fd_exe
+endif
+
+
 export def GetMRU(limit: number): list<string>
     final recently_used: list<string> = []
     var found = 0
@@ -26,6 +33,6 @@ export def BuildFindCommand(root: string): string
     final ignore_dirsfiles = ignores->copy()
     ignore_dirsfiles->map((_, val) => $'-E {val}')
     const dirsfiles = ignore_dirsfiles->join()
-    # echom dirsfiles
-    return $'fd -d 4 {dirsfiles} {root}'
+    return $'{fd_exe} -d 4 -c never {dirsfiles} {root}'
+    
 enddef
