@@ -12,7 +12,6 @@ command! MinifuzzyMRU                         finders.MRU()
 command! MinifuzzyLines                       finders.Lines()
 command! MinifuzzyGitFiles                    finders.GitFiles()
 command! MinifuzzyCommand                     finders.Command()
-command! MinifuzzyVimInfo                     finders.VimInfo()
 command! MinifuzzyDirectoryHistory                    finders.DirectoryHistory()
 nnoremap <leader>ff <Cmd>MinifuzzyFind<CR>
 nnoremap <C-p>      <Cmd>MinifuzzyFind<CR>

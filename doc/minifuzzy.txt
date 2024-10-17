@@ -57,6 +57,8 @@ The following mappings can be used to initiate a fuzzy find:
     <leader>fm ............. Most recently used files
     <leader>fl ............. Lines in the current buffer
     <leader>fg ............. Files in current Git repository
+    <leader>fd ............. Nertw Bookmarks and  Recent folders
+    (reuqired https://github.com/sevehub/recentdirs.vim)
 
 While the minifuzzy.vim window is open:
 
@@ -114,6 +116,12 @@ The bar indicates where the cursor will be placed.
     git ls-files and fills the window with the result.
     Mapped to: <leader>fg
 
+|:MinifuzzyDirectoryHistory| 
+   Fuzzy find through netrw bookmarks and recent updated folders.
+   Mapped to <leader>fd
+   It requires https://github.com/sevehub/recentdirs.vim plugin
+   installed.
+	
 ====================================================================
 3. Custom Prompts 				     *MinifuzzyCustom*
 
