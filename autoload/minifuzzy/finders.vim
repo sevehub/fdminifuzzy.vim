@@ -7,7 +7,7 @@ import './callbacks.vim'
 const InitFuzzyFind = minifuzzy.InitFuzzyFind
 
 export def GitFiles()
-    InitFuzzyFind(systemlist('git ls-files'), { title: $'GIT: {utils.GetCurrentDirectory()}/' })
+    InitFuzzyFind(util.SystemListClean('git ls-files'), { title: $'GIT: {utils.GetCurrentDirectory()}/' })
 enddef
 
 export def MRU()
@@ -17,7 +17,7 @@ enddef
 # Command functions
 export def Find(directory: string)
     const root = directory == '' ? '.' : directory
-    const ffiles = systemlist(utils.BuildFindCommand(root))
+    const ffiles = utils.SystemListClean(utils.BuildFindCommand(root))
 
     if ffiles->len() != 0 
        InitFuzzyFind(ffiles, { title: $'{utils.GetCurrentDirectory()}/' })

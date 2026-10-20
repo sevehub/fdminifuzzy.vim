@@ -6,6 +6,13 @@ if exists('g:fd_exe')
     fd_exe = g:fd_exe
 endif
 
+export def SystemListClean(cmd: string): list<string>
+    var result = systemlist(cmd)
+    if has("win32")
+        result->map((_, v) => trim(v, "\r", 2))
+    endif
+    return result
+enddef
 
 export def GetMRU(limit: number): list<string>
     final recently_used: list<string> = []
